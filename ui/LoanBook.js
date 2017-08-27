@@ -8,23 +8,28 @@ import {
     Route,
 } from 'react-router-native';
 
+import ReduxProvider from '../redux';
+
 import Navbar from './navBar';
 import HomeScene from './home';
 import PeopleScene from './people';
+import PersonScene from './person';
 import LoansScene from './loans';
 
 export default class LoanBook extends React.Component {
     render() {
         return (
-            <NativeRouter>
-                <View>
-                    <Navbar />
-
-                    <Route exact path="/" component={HomeScene} />
-                    <Route path="/people" component={PeopleScene} />
-                    <Route path="/loans" component={LoansScene} />
-                </View>
-            </NativeRouter>
+            <ReduxProvider>
+                <NativeRouter>
+                    <View>
+                        <Navbar />
+                        <Route exact path="/" component={HomeScene} />
+                        <Route exact path="/people" component={PeopleScene} />
+                        <Route path="/people/:id" component={PersonScene} />
+                        <Route path="/loans" component={LoansScene} />
+                    </View>
+                </NativeRouter>
+            </ReduxProvider>
         );
     }
 }
