@@ -11,7 +11,7 @@ const PeopleList = ({ people }) => (
             <PersonLink
                 id={item.get('id')}
                 name={item.get('name')}
-                loaned={item.get('loaned')}
+                loanSum={item.get('loanSum')}
             />
         }
         keyExtractor={(item, index) => item.get('id')}

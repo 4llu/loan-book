@@ -5,9 +5,12 @@ import {
     Text,
 } from 'react-native';
 
-const LoanTotal = ({}) => (
+import LoanSum from './LoanSum';
+import { formatEuro } from '../../utils/formatting';
+
+const LoanTotal = ({ sum }) => (
     <View style={styles.loanTotalContainer}>
-        <Text style={styles.loanTotal}>+150,00€</Text>
+        <LoanSum sum={sum} additionalStyles={[styles.loanSum]} />
     </View>
 );
 
@@ -18,9 +21,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 24,
     },
-    loanTotal: {
+    loanSum: {
         fontSize: 36,
-        color: '#2ecc71',
     },
 });
 

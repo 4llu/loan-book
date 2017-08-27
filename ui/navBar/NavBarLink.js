@@ -37,7 +37,7 @@ NavBarLink.propTypes = {
     exact: PropTypes.bool,
     to: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    location: PropTypes.any.isRequired,
+    location: PropTypes.object.isRequired,
 };
 
 NavBarLink.defaultProps = {

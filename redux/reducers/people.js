@@ -4,17 +4,17 @@ const initialState = fromJS({
     peopleList: [
         {
             name: 'Aleksanteri Hämäläinen',
-            loaned: 4.97,
+            loanSum: 4.00,
             id: 1,
         },
         {
             name: 'Teemu Teekkari',
-            loaned: 0,
+            loanSum: 0.00,
             id: 2,
         },
         {
             name: 'Matti Meikäläinen',
-            loaned: -13.01,
+            loanSum: -13.20,
             id: 3,
         },
     ]

@@ -7,26 +7,18 @@ import {
 import { Link } from 'react-router-native';
 import PropTypes from 'prop-types';
 
-import { formatEuro } from '../../utils/format';
+import LoanSum from '../common/LoanSum';
 
-const calcLoanedStyles = (loaned) => {
-    if (loaned > 0) {
-        return styles.positiveLoaned;
-    }
-    else if (loaned < 0) {
-        return styles.negativeLoaned;
-    }
-    return null;
-};
+import { formatEuro } from '../../utils/formatting';
 
-const PersonLink = ({ id, name, loaned }) => (
+const PersonLink = ({ id, name, loanSum }) => (
     <Link
         to={`/people/${id}`}
         underlayColor="#ecf0f1"
     >
         <View style={styles.linkContainer}>
             <Text style={[styles.linkName, styles.linkText]}>{name}</Text>
-            <Text style={[styles.linkLoaned, styles.linkText, calcLoanedStyles(loaned)]}>{formatEuro(loaned)}</Text>
+            <LoanSum sum={loanSum} additionalStyles={[styles.linkText]} />
         </View>
     </Link>
 );
@@ -34,7 +26,7 @@ const PersonLink = ({ id, name, loaned }) => (
 PersonLink.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    loaned: PropTypes.number.isRequired,
+    loanSum: PropTypes.number.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -49,12 +41,6 @@ const styles = StyleSheet.create({
     },
     linkName: {
         flex: 1,
-    },
-    positiveLoaned: {
-        color: 'green',
-    },
-    negativeLoaned: {
-        color: 'red',
     },
 });
 
