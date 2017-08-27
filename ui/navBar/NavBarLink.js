@@ -5,26 +5,39 @@ import {
     Text,
 } from 'react-native';
 import {
+    withRouter,
     Link,
 } from 'react-router-native';
 
-
-const NavBarLink = ({ exact, to, name }) => (
-    <Link
-        exact={exact}
-        to={to}
-        style={styles.link}
-        activeStyle={styles.linkActive}
-        underlayColor="white"
-    >
-        <Text style={styles.linkText}>{name}</Text>
-    </Link>
+const isActive = (ownPath, currentPath) => (
+    ownPath.substring(1) === currentPath.split('/')[1]
 );
+
+const calcLinkStyles = (active) => ([
+    styles.link,
+    active && styles.linkActive,
+]);
+
+const NavBarLink = ({ exact, to, name, location }) => {
+    const active = isActive(to, location.pathname);
+
+    return (
+        <Link
+            exact={exact}
+            to={to}
+            style={calcLinkStyles(active)}
+            underlayColor="white"
+        >
+            <Text style={styles.linkText}>{name}</Text>
+        </Link>
+    )
+};
 
 NavBarLink.propTypes = {
     exact: PropTypes.bool,
     to: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    location: PropTypes.any.isRequired,
 };
 
 NavBarLink.defaultProps = {
@@ -50,4 +63,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default NavBarLink;
+export default withRouter(NavBarLink);

@@ -20,7 +20,10 @@ const calcLoanedStyles = (loaned) => {
 };
 
 const PersonLink = ({ id, name, loaned }) => (
-    <Link to={`/people/${id}`}>
+    <Link
+        to={`/people/${id}`}
+        underlayColor="#ecf0f1"
+    >
         <View style={styles.linkContainer}>
             <Text style={[styles.linkName, styles.linkText]}>{name}</Text>
             <Text style={[styles.linkLoaned, styles.linkText, calcLoanedStyles(loaned)]}>{formatEuro(loaned)}</Text>

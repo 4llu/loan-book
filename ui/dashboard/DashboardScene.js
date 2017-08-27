@@ -10,7 +10,7 @@ import {
 
 import LoanTotal from './LoanTotal';
 
-export default class HomeScene extends React.Component {
+export default class DashboardScene extends React.Component {
     render() {
         return (
             <View>

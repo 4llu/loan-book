@@ -11,10 +11,9 @@ import {
 import ReduxProvider from '../redux';
 
 import Navbar from './navBar';
-import HomeScene from './home';
+import DashboardScene from './dashboard';
 import PeopleScene from './people';
 import PersonScene from './person';
-import LoansScene from './loans';
 
 export default class LoanBook extends React.Component {
     render() {
@@ -23,10 +22,9 @@ export default class LoanBook extends React.Component {
                 <NativeRouter>
                     <View>
                         <Navbar />
-                        <Route exact path="/" component={HomeScene} />
+                        <Route exact path="/" component={DashboardScene} />
                         <Route exact path="/people" component={PeopleScene} />
                         <Route path="/people/:id" component={PersonScene} />
-                        <Route path="/loans" component={LoansScene} />
                     </View>
                 </NativeRouter>
             </ReduxProvider>

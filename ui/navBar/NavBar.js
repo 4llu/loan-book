@@ -4,29 +4,26 @@ import {
     View,
     Text,
 } from 'react-native';
+import { withRouter } from 'react-router-native';
 
 import NavBarLink from './NavBarLink';
 
-const NavBar = ({}) => (
-    <View style={styles.header}>
-        <NavBarLink
-            exact={true}
-            to="/"
-            name="Home"
-        />
-        <NavBarLink
-            exact={true}
-            to="/people"
-            name="People"
-        />
-        <NavBarLink
-            exact={true}
-            to="/loans"
-            name="Loans"
-        />
-    </View>
-);
-
+const NavBar = () => {
+    return (
+        <View style={styles.header}>
+            <NavBarLink
+                exact={true}
+                to="/"
+                name="Dashboard"
+            />
+            <NavBarLink
+                exact={true}
+                to="/people"
+                name="People"
+            />
+        </View>
+    );
+};
 const styles = StyleSheet.create({
     header: {
         display: 'flex',
@@ -34,4 +31,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default NavBar;
+export default withRouter(NavBar);
