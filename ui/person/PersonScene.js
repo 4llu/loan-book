@@ -3,19 +3,31 @@ import {
     StyleSheet,
     View,
     Text,
+    Image,
 } from 'react-native';
+import CopyButton from './CopyButton';
+import { ImmutableVirtualizedList } from 'react-native-immutable-list-view';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import LoanTotal from '../common/LoanTotal';
 
-const PersonScene = ({ name, loanSum }) => (
+const PersonScene = ({ name, loanSum, infos }) => (
     <View>
         <Text style={styles.name}>{name}</Text>
         <LoanTotal sum={loanSum} />
         <View style={styles.container}>
-            <Text style={styles.text}>Account number:</Text>
-            <Text style={styles.text}>FI26 1234 2345 34</Text>
+            <Text style={styles.infoHeading}>Info:</Text>
+            <ImmutableVirtualizedList
+                immutableData={infos}
+                renderItem={({item}) =>
+                    <View style={styles.infoContainer}>
+                        <CopyButton text={item} />
+                        <Text style={styles.info}>{item}</Text>
+                    </View>
+                }
+                keyExtractor={(item, index) => item}
+            />
         </View>
     </View>
 );
@@ -34,8 +46,17 @@ const styles = StyleSheet.create({
     container: {
         margin: 16,
     },
-    text: {
+    infoHeading: {
         fontSize: 24,
+        marginBottom: 8,
+    },
+    infoContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    info: {
+        fontSize: 18,
+        marginBottom: 4,
     }
 });
 
@@ -44,6 +65,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         name: person.get('name'),
         loanSum: person.get('loanSum'),
+        infos: person.get('infos'),
     }
 };
 
