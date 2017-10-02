@@ -22,13 +22,17 @@ const calcLoanSumStyles = (sum) => {
 
 const LoanSum = ({ sum, additionalStyles }) => (
     <View>
-        <Text style={[...calcLoanSumStyles(sum), ...additionalStyles]}>{formatEuro(sum)}</Text>
+        <Text style={[...calcLoanSumStyles(sum), additionalStyles]}>{formatEuro(sum)}</Text>
     </View>
 );
 
 LoanSum.propTypes = {
     sum: PropTypes.number.isRequired,
     additionalStyles: PropTypes.any,
+}
+
+LoanSum.defaultProps = {
+    additionalStyles: {},
 }
 
 const styles = StyleSheet.create({

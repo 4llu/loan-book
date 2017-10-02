@@ -29,7 +29,8 @@ const initialState = fromJS({
             ],
             id: 3,
         },
-    ]
+    ],
+    mostRecent: 3,
 });
 
 const people = (state = initialState, action) => {

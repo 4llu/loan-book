@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 24,
+        margin: 0,
     },
     loanSum: {
         fontSize: 36,
