@@ -5,6 +5,7 @@ import {
     Text,
     Image,
 } from 'react-native';
+import ActionButton from '../common/ActionButton';
 import CopyButton from './CopyButton';
 import { ImmutableVirtualizedList } from 'react-native-immutable-list-view';
 import { PropTypes } from 'prop-types';
@@ -13,23 +14,25 @@ import { connect } from 'react-redux';
 import LoanTotal from '../common/LoanTotal';
 
 const PersonScene = ({ name, loanSum, infos }) => (
-    <View>
-        <Text style={styles.name}>{name}</Text>
-        <LoanTotal sum={loanSum} />
-        <View style={styles.container}>
-            <Text style={styles.infoHeading}>Info:</Text>
-            <ImmutableVirtualizedList
-                immutableData={infos}
-                renderItem={({item}) =>
-                    <View style={styles.infoContainer}>
-                        <CopyButton text={item} />
-                        <Text style={styles.info}>{item}</Text>
-                    </View>
-                }
-                keyExtractor={(item, index) => item}
-            />
+    <ActionButton to="/people">
+        <View style={{flex: 1}}>
+            <Text style={styles.name}>{name}</Text>
+            <LoanTotal sum={loanSum} />
+            <View style={styles.container}>
+                <Text style={styles.infoHeading}>Info:</Text>
+                <ImmutableVirtualizedList
+                    immutableData={infos}
+                    renderItem={({item}) =>
+                        <View style={styles.infoContainer}>
+                            <CopyButton text={item} />
+                            <Text style={styles.info}>{item}</Text>
+                        </View>
+                    }
+                    keyExtractor={(item, index) => item}
+                />
+            </View>
         </View>
-    </View>
+    </ActionButton>
 );
 
 PersonScene.propTypes = {

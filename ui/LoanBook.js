@@ -20,7 +20,7 @@ export default class LoanBook extends React.Component {
         return (
             <ReduxProvider>
                 <NativeRouter>
-                    <View>
+                    <View style={{ flex: 1 }}>
                         <Navbar />
                         <Route exact path="/" component={DashboardScene} />
                         <Route exact path="/people" component={PeopleScene} />
